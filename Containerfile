@@ -32,7 +32,8 @@ RUN --mount=type=cache,target=/root/.conan2 \
 	conan config install -sf conan/profiles/v1 -tf profiles https://github.com/libhal/libhal-micromod.git
 
 WORKDIR /root/urc-control-systems-2024
-RUN git clone https://github.com/SJSURoboticsTeam/urc-control-systems-2024 .
+RUN git clone https://github.com/LQR471814/urc-control-systems-2024 .
+RUN git checkout build_issues
 
 WORKDIR /root/urc-control-systems-2024/drive
 RUN --mount=type=cache,target=/root/.conan2 \
