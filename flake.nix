@@ -4,7 +4,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
   outputs =
-    { flake-parts, ... }@inputs:
+    { self, flake-parts, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
@@ -18,18 +18,44 @@
               name = "libhal-fhs";
               targetPkgs =
                 pkgs: with pkgs; [
+                  # basic tools
+                  zlib # Add this
+                  zstd # And this (often needed too)
+                  libxml2
+                  ncurses
+                  openssl
+
+                  gcc-unwrapped
+                  stdenv.cc.cc.lib
+                  gcc
+                  gcc.cc.lib
+                  libgcc
+                  glibc
+                  glibc.dev
+                  clang_20
+
                   conan
                   cmake
+                  gnumake
+
                   python313
                   python313Packages.pyserial
-
-                  zlib
-                  zstd
-                  picolibc
+                  binutils
+                  curl
+                  xz
+                  bzip2
+                  git
                 ];
               runScript = "bash";
               profile = ''
-                export CONAN_HOME="$(pwd)/.libhal-conan2"
+                mkdir -p "$HOME/.nix-fhs-libs"
+                ln -sf /lib/libxml2.so.16 "$HOME/.nix-fhs-libs/libxml2.so.2"
+                export LD_LIBRARY_PATH="$HOME/.nix-fhs-libs:/lib:$LD_LIBRARY_PATH"
+
+                export CC="${pkgs.clang_20}/bin/clang"
+                export CXX="${pkgs.clang_20}/bin/clang++"
+
+                export CONAN_HOME="$(git rev-parse --show-toplevel)/.conan2"
               '';
             }).env;
         };

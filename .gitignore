@@ -48,4 +48,4 @@ build/
 
 *.sh
 
-.libhal-conan2
+.conan2
