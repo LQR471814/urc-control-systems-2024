@@ -32,7 +32,6 @@
                   libgcc
                   glibc
                   glibc.dev
-                  clang_20
 
                   conan
                   cmake
@@ -51,9 +50,6 @@
                 mkdir -p "$HOME/.nix-fhs-libs"
                 ln -sf /lib/libxml2.so.16 "$HOME/.nix-fhs-libs/libxml2.so.2"
                 export LD_LIBRARY_PATH="$HOME/.nix-fhs-libs:/lib:$LD_LIBRARY_PATH"
-
-                export CC="${pkgs.clang_20}/bin/clang"
-                export CXX="${pkgs.clang_20}/bin/clang++"
 
                 export CONAN_HOME="$(git rev-parse --show-toplevel)/.conan2"
               '';
