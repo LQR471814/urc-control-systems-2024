@@ -49,3 +49,4 @@ build/
 *.sh
 
 .conan2
+.docker-conan2
