@@ -24,6 +24,8 @@ RUN python3 -m pip install "conan>=2.2.2" cmake
 # RUN conan create . -pr:a hal/tc/gcc -pr hal/mcu/stm32f103c8 -b missing
 # RUN conan build demos -pr:a hal/tc/gcc -pr hal/mcu/stm32f103c8 -b missing
 
+RUN pip install puncover
+
 WORKDIR /code
 
 CMD ["/bin/bash"]

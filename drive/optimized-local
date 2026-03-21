@@ -1,0 +1,8 @@
+[conf]
+# tools.build:cxxflags=["-Os", "-ffunction-sections", "-fdata-sections", "-fno-exceptions", "-fno-rtti", "-fno-unwind-tables", "-fno-asynchronous-unwind-tables"]
+# tools.build:cflags=["-Os", "-ffunction-sections", "-fdata-sections"]
+# tools.build:sharedlinkflags=["--specs=nano.specs", "-Wl,--gc-sections"]
+# tools.build:exelinkflags=["--specs=nano.specs", "-Wl,--gc-sections"]
+tools.build:exelinkflags=['-Wl,-Map=output.map,--cref,--print-memory-usage']
+tools.build:cxxflags+=['-Wno-error=stringop-overflow']
+tools.build:cflags+=['-Wno-error=stringop-overflow']
