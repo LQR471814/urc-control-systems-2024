@@ -46,7 +46,5 @@ build/
 
 .cache
 
-*.sh
-
 .docker-conan2
 .conan2
