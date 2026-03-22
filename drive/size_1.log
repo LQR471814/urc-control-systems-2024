@@ -1,7 +1,0 @@
-build/micromod/mod-stm32f1-v5/Release/CMakeFiles/startup_code.dir/src/swerve_module.cpp.obj
-build/micromod/mod-stm32f1-v5/Release/CMakeFiles/startup_code.dir/src/drivetrain_math.cpp.obj
-build/micromod/mod-stm32f1-v5/Release/CMakeFiles/startup_code.dir/src/drivetrain.cpp.obj
-build/micromod/mod-stm32f1-v5/Release/CMakeFiles/startup_code.dir/code/drivers/src/serial_commands.cpp.obj
-build/micromod/mod-stm32f1-v5/Release/CMakeFiles/startup_code.dir/main.cpp.obj
-build/micromod/mod-stm32f1-v5/Release/CMakeFiles/startup_code.dir/platforms/stm32f103c8.cpp.obj
-build/micromod/mod-stm32f1-v5/Release/CMakeFiles/serial_command_demo.elf.dir/applications/serial_command_demo.cpp.obj
