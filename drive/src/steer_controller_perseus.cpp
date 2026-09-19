@@ -32,17 +32,35 @@ void steer_controller_perseus::hard_home()
 
 void steer_controller_perseus::home()
 {
-  throw hal::operation_not_supported(this);
+  m_is_homed = false;
+  m_perseus->home();
 }
 
 void steer_controller_perseus::home_periodic()
 {
-  throw hal::operation_not_supported(this);
+  if (!m_is_homed) {
+    if (!m_perseus->is_homing()) {
+      // not done homing and no homing in progress -> finish
+      m_is_homed = true;
+      return;
+    }
+    // not done homing and homing in progress -> OK
+    return;
+  } else {
+    if (m_perseus->is_homing()) {
+      // done homing and homing in progress -> something has gone wrong
+      throw hal::exception(std::errc::operation_not_permitted, &m_perseus);
+      return;
+    }
+    // not done homing and homing not in progress -> something has gone wrong
+    throw hal::exception(std::errc::state_not_recoverable, &m_perseus);
+    return;
+  }
 }
 
 bool steer_controller_perseus::is_homing()
 {
-  throw hal::operation_not_supported(this);
+  return m_perseus->is_homing();
 }
 
 bool steer_controller_perseus::is_homed()
