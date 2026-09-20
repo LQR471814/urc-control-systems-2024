@@ -19,6 +19,7 @@ public:
   void home_periodic() override;
   bool is_homing() override;
   bool is_homed() override;
+  void stop_home() override;
 
   void set_target_position(hal::degrees p_target_position) override;
   hal::degrees get_target_postion() override;
